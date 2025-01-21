@@ -52,6 +52,7 @@
           "ghostty"
           "cursor"
           "android-platform-tools"
+          "slack"
         ];
       };
     };
