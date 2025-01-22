@@ -15,22 +15,24 @@
       environment.systemPackages = 
         let 
           pythonWithPackages = pkgs.python3.withPackages(ps: [ps.pynvim ps.rich ps.pydantic]);
-        in 
-          [ pkgs.vim
-            pkgs.neovim
-            pkgs.zellij
-            pkgs.bun
-            pkgs.btop
-            pkgs.bat
-            pkgs.lazygit
-            pkgs.starship
-            pkgs.git
-            pkgs.nodejs_20
-            pkgs.yarn
-            pkgs.zoxide
-            pythonWithPackages
-          ];
-      
+        in
+        [ 
+          pkgs.neovim
+          pkgs.git
+          pkgs.zellij
+          pkgs.btop
+          pkgs.bat
+          pkgs.lazygit
+          pkgs.starship
+          pkgs.nodejs_20
+          pkgs.bun
+          pkgs.yarn
+          pkgs.zoxide
+          pkgs.wget
+          pkgs.curl
+          pkgs.stow
+          pythonWithPackages
+        ]; 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -52,7 +54,7 @@
           "ghostty"
           "cursor"
           "android-platform-tools"
-          "slack"
+          "slack" 
         ];
       };
     };
