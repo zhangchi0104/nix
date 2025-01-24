@@ -7,10 +7,11 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =  {self, nix-darwin, ... }:
+  outputs =  {self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
+      nixpkgs.config.allowUnfree = true;
       # $ nix-env -qaP | grep wget
       environment.systemPackages = 
         let 
@@ -31,6 +32,9 @@
           pkgs.wget
           pkgs.curl
           pkgs.stow
+          pkgs.ngrok
+          pkgs.twilio-cli
+          pkgs.cocoapods
           pythonWithPackages
         ]; 
       # Necessary for using flakes on this system.
@@ -54,7 +58,8 @@
           "ghostty"
           "cursor"
           "android-platform-tools"
-          "slack" 
+          "slack"
+          "postman"
         ];
       };
     };
