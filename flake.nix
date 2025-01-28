@@ -7,68 +7,18 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =  {self, nix-darwin, nixpkgs }:
-  let
-    configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      nixpkgs.config.allowUnfree = true;
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages = 
-        let 
-          pythonWithPackages = pkgs.python3.withPackages(ps: [ps.pynvim ps.rich ps.pydantic]);
-        in
-        [ 
-          pkgs.neovim
-          pkgs.git
-          pkgs.zellij
-          pkgs.btop
-          pkgs.bat
-          pkgs.lazygit
-          pkgs.starship
-          pkgs.nodejs_20
-          pkgs.bun
-          pkgs.yarn
-          pkgs.zoxide
-          pkgs.wget
-          pkgs.curl
-          pkgs.stow
-          pkgs.ngrok
-          pkgs.twilio-cli
-          pkgs.cocoapods
-          pythonWithPackages
-        ]; 
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 5;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-
-      # Homebrew Configuration
-      homebrew  = {
-        enable = true;
-        brews = [];
-        casks = [
-          "ghostty"
-          "cursor"
-          "android-platform-tools"
-          "slack"
-          "postman"
-        ];
-      };
-    };
-  in
+  outputs =  {self, nix-darwin, nixpkgs }@inputs:
+  
   {
-    # Build darwin flake using:
+  
+      # Build darwin flake using:
     # $ darwin-rebuild build --flake .#zhangchis-MacBook-Pro
-    darwinConfigurations."zhangchis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+    darwinConfigurations = { 
+      "zhangchis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ ./hosts/alex-mbp.nix ];
+        specialArgs = { inherit inputs; };
+      };
     };
   };
 }
