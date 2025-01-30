@@ -2,16 +2,30 @@
   description = "Example nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    };
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master"; 
+      inputs.nixpkgs.follows = "nixpkgs";
+
+    };
+    # home-manager 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # capuccin - colorscheme
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
   };
 
-  outputs =  {self, nix-darwin, nixpkgs }@inputs:
-  
+  outputs = { self, nix-darwin, nixpkgs, ... }@inputs:
   {
-  
-      # Build darwin flake using:
+    # Build darwin flake using:
     # $ darwin-rebuild build --flake .#zhangchis-MacBook-Pro
     darwinConfigurations = { 
       "zhangchis-MacBook-Pro" = nix-darwin.lib.darwinSystem {

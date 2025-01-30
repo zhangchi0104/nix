@@ -1,6 +1,6 @@
 { pkgs, ... }: 
 {
-  environemnt.systemPackages =  with pkgs; 
+  environment.systemPackages =  with pkgs; 
     let 
       pythonWithPackages = python3.withPackages(ps: [ps.pynvim ps.rich ps.pydantic]);
     in
