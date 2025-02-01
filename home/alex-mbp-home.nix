@@ -10,6 +10,7 @@
     home.stateVersion = "24.05";
     programs.home-manager.enable = true;
     imports = [
+      inputs.catppuccin.homeManagerModules.catppuccin
       ./command-line
       ./ssh
     ];

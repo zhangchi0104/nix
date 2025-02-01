@@ -10,6 +10,8 @@
       "slack"
       "postman"
     ];
-    brews = [];
+    brews = [
+      "livekit-cli"
+    ];
   };
 }
