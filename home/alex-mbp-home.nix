@@ -12,11 +12,13 @@
     imports = [
       inputs.catppuccin.homeManagerModules.catppuccin
       ./command-line
+      ./editors
       ./ssh
     ];
-
+    catppuccin = {
+      flavor = "mocha";
+    };
   };
-
   users.users.alexzhang = {
     name = "alexzhang";
     home = "/Users/alexzhang";

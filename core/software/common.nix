@@ -22,6 +22,7 @@
       wget
       curl
       ripgrep
+      eza
  
       # Development
       nodejs_20

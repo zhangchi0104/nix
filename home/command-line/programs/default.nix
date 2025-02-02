@@ -1,6 +1,7 @@
 {...} : {
   imports = [
     ./zoxide.nix
-    # ./zellij.nix
+    ./eza.nix
+    ./zellij.nix
   ];
 }

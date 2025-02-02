@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "My flake";
 
   inputs = {
     
@@ -20,6 +20,12 @@
     # capuccin - colorscheme
     catppuccin = {
       url = "github:catppuccin/nix";
+    };
+
+    # my dotfiles
+    dotfiles = {
+      url = "github:zhangchi0104/dotfiles";
+      flake = false;
     };
   };
 

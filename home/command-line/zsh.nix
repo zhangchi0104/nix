@@ -4,8 +4,9 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      ll = "ls -l";
-      la = "ls -la";
+      ls = "eza";
+      ll = "eza -l";
+      la = "eza -la";
       lg = "lazygit";
       e = "$EDITOR";
     };
@@ -16,6 +17,7 @@
     syntaxHighlighting = {
       enable = true;
     };
+    
     history = {
       extended = true;
     };
