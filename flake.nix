@@ -27,6 +27,10 @@
       url = "github:zhangchi0104/dotfiles";
       flake = false;
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nix-darwin, nixpkgs, ... }@inputs:

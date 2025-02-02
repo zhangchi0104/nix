@@ -11,6 +11,7 @@
     programs.home-manager.enable = true;
     imports = [
       inputs.catppuccin.homeManagerModules.catppuccin
+      ./common/dotfiles.nix
       ./command-line
       ./editors
       ./ssh
