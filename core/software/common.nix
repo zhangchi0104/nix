@@ -23,6 +23,8 @@
       curl
       ripgrep
       eza
+      openssh
+      uv
  
       # Development
       nodejs_20
@@ -33,6 +35,7 @@
       twilio-cli
       pythonWithPackages
       # darwin
+      
       cocoapods
     ];
 }
