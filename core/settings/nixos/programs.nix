@@ -8,4 +8,6 @@
     enable = true;
     polkitPolicyOwners = ["aris"];
   };
+
+  programs.zsh.enable = true;
 }

@@ -7,5 +7,6 @@
     slack
     postman
     android-tools
+    gcc
   ];
 }
