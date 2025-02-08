@@ -5,7 +5,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  users.users.aris = lib.mkDefault {
+  users.users.aris = {
      isNormalUser = true;
      extraGroups = ["wheel" "networkmanager"];
      home = "/home/aris";
