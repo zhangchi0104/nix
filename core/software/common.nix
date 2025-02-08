@@ -25,6 +25,10 @@
       eza
       openssh
       uv
+
+      # aws
+      awscli2
+      aws-gate
  
       # Development
       nodejs_20
