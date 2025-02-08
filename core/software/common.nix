@@ -34,8 +34,6 @@
       ngrok
       twilio-cli
       pythonWithPackages
-      # darwin
       
-      cocoapods
     ];
 }

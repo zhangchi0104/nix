@@ -44,5 +44,12 @@
         specialArgs = { inherit inputs; };
       };
     };
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/alex-desktop
+      ];
+      specialArgs = { inherit inputs; };
+    };
   };
 }
