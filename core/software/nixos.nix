@@ -8,5 +8,6 @@
     postman
     android-tools
     gcc
+    gnome-tweaks
   ];
 }

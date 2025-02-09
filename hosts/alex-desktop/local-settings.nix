@@ -9,6 +9,7 @@
      isNormalUser = true;
      extraGroups = ["wheel" "networkmanager"];
      home = "/home/aris";
+     name = "Aris Tendou";
    };
 }
 

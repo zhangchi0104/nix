@@ -1,5 +1,9 @@
 { ... }:
-
+let
+  dconfSettings = {
+   
+  };
+in
 {
   # nixos specific programs
   programs.firefox.enable = true;
@@ -10,4 +14,8 @@
   };
 
   programs.zsh.enable = true;
+
+
+  # deconf
+  programs.dconf.enable = true;
 }

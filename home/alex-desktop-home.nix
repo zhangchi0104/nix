@@ -15,6 +15,7 @@
       ./command-line
       ./editors
       ./ssh
+      ./nixos/gnome
     ];
     catppuccin = {
       flavor = "mocha";
