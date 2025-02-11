@@ -34,6 +34,9 @@
   };
 
   outputs = { self, nix-darwin, nixpkgs, ... }@inputs:
+  let
+    utils = import ./utils { inherit inputs; };
+  in 
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#zhangchis-MacBook-Pro
@@ -41,7 +44,7 @@
       "zhangchis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [ ./hosts/alex-mbp.nix ];
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs utils;};
       };
     };
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
@@ -49,7 +52,7 @@
       modules = [
         ./hosts/alex-desktop
       ];
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs utils; };
     };
   };
 }

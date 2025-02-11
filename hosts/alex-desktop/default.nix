@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, utils, ... }:
 
 {
   imports = [
@@ -21,7 +21,7 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
-      inherit inputs;
+      inherit inputs utils;
     };
   };
 }
