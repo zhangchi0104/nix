@@ -15,6 +15,9 @@ in
     settings = {
       keybinds = keybinds;
     };
+    enableZshIntegration = false;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
   };
 
   # home.file.zellij = {

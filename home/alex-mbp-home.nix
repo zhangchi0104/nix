@@ -12,6 +12,7 @@
     imports = [
       inputs.catppuccin.homeManagerModules.catppuccin
       ./common/dotfiles.nix
+      ./software
       ./command-line
       ./editors
       ./ssh
