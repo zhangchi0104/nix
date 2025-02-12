@@ -1,24 +1,23 @@
-{ nixpkgs, ... }:
+{ nixpkgs, constants, ... }@inputs:
 let 
   inherit (nixpkgs.lib.attrsets) mapAttrsToList;
-  inherit (nixpkgs.stdenv) isDarwin isLinux;
-
-  helperFns = {
-    attrKeys = attrs: if (!builtins.isAttrs attrs) 
-      then []
-      else mapAttrsToList(name: value: name) attrs;
-  };
+  inherit (nixpkgs.lib.path) append;
+  inherit (builtins) filter;
 in
-{
-  inherit (helperFns) attrKeys;
+rec {
+  attrKeys = attrs: if (!builtins.isAttrs attrs) 
+    then []
+    else mapAttrsToList(name: value: name) attrs;
   listDir = dir:
     let
-      inherit (helperFns) attrKeys;
       fileAttrs = builtins.readDir dir;
       fileNames = attrKeys fileAttrs;
     in fileNames;
-  mkDarwin = v : if isDarwin then v else null;
-  mkLinux = v : if isLinux then v else null;
-  mkDarwinOrElse = v: elseVal: if isDarwin then v else elseVal;
-  mkLinuxOrElse = v: elseVal: if isLinux then v else elseVal;
+  sourceDir = dir:
+    let
+     files = listDir dir;
+     sourceFiles = filter (file: file != "default.nix") files;
+    in builtins.map (it: append dir it) sourceFiles;
+
+
 }

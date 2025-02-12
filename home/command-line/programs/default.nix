@@ -1,7 +1,3 @@
-{...} : {
-  imports = [
-    ./zoxide.nix
-    ./eza.nix
-    ./zellij.nix
-  ];
+{utils, ...} : {
+  imports = utils.functions.sourceDir ./.;
 }

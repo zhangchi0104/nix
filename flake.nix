@@ -35,7 +35,7 @@
 
   outputs = { self, nix-darwin, nixpkgs, ... }@inputs:
   let
-    utils = import ./utils { inherit inputs; };
+    utils = import ./utils inputs;
   in 
   {
     # Build darwin flake using:

@@ -1,7 +1,7 @@
-{ nixpkgs, ... }: 
+{ nixpkgs, ... }@inputs: 
 let
-  inherit (nixpkgs.stdenv) isDarwin isLinux;
+  inherit (nixpkgs.lib.strings) splitString;
+  inherit (nixpkgs.lib.lists) last;
 in
 {
-  inherit isDarwin isLinux;
 }

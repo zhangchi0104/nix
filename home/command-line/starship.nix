@@ -8,10 +8,8 @@
   };
 
   programs.starship.settings = {
-    
     aws = {
       disabled = true;
-     
     };
   };
 }

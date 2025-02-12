@@ -1,7 +1,5 @@
-{ ... }:
+{ utils, ... }:
 
 {
-  imports = [
-    ./ghostty.nix
-  ];
+  imports = utils.functions.sourceDir ./.;
 }
