@@ -7,7 +7,7 @@
   home-manager.users.alexzhang = {
     home.username = "alexzhang";
     home.homeDirectory = "/Users/alexzhang";
-    home.stateVersion = "24.05";
+    home.stateVersion = "25.05";
     programs.home-manager.enable = true;
     imports = [
       inputs.catppuccin.homeManagerModules.catppuccin

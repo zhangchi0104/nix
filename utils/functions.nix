@@ -2,9 +2,14 @@
 let 
   inherit (nixpkgs.lib.attrsets) mapAttrsToList;
   inherit (nixpkgs.lib.path) append;
-  inherit (builtins) filter;
+  inherit (nixpkgs.lib.lists) filter;
+  inherit (builtins) match;
+  inherit (constants) arch os;
+  removeAll =  itemsToRemove: allItems:
+    filter (item: !builtins.elem item itemsToRemove) allItems;
 in
 rec {
+  inherit removeAll;
   attrKeys = attrs: if (!builtins.isAttrs attrs) 
     then []
     else mapAttrsToList(name: value: name) attrs;
@@ -18,6 +23,14 @@ rec {
      files = listDir dir;
      sourceFiles = filter (file: file != "default.nix") files;
     in builtins.map (it: append dir it) sourceFiles;
-
-
+  sourceDirByOs = dir:
+    let
+      filesToExclude = [ "default.nix" "darwin.nix" "linux.nix" "linux" "darwin" ];
+      files = listDir dir;
+      commonFiles = removeAll filesToExclude files;
+      osSpecificFiles = filter (file: match ".*${os}(\.nix)?" file != null) files;
+      combinedFiles = commonFiles ++ osSpecificFiles;
+    in builtins.map (it: append dir it) combinedFiles;
+  mkIfLinux = val: if os == "linux" then val else {};
+  mkIfDarwin = val: if os == "darwin" then val else {};
 }

@@ -5,14 +5,9 @@
     # home manager core
     inputs.home-manager.darwinModules.home-manager
     # packages
-    ../core/software/common.nix 
-    ../core/software/darwin.nix
-    ../core/software/homebrew.nix
-
+    ../core/software
     # system settings
-    ../core/settings/common.nix
-    ../core/settings/darwin.nix
-
+    ../core/settings
     # home manager
     ../home/alex-mbp-home.nix
   ];

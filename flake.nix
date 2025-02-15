@@ -20,23 +20,14 @@
     # capuccin - colorscheme
     catppuccin = {
       url = "github:catppuccin/nix";
-    };
-
-    # my dotfiles
-    dotfiles = {
-      url = "github:zhangchi0104/dotfiles";
-      flake = false;
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = { self, nix-darwin, nixpkgs, ... }@inputs:
   let
-    utils = import ./utils inputs;
-  in 
+    mkUtils = system: import ./utils {  inherit system nixpkgs;};
+  in
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#zhangchis-MacBook-Pro
@@ -44,7 +35,9 @@
       "zhangchis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [ ./hosts/alex-mbp.nix ];
-        specialArgs = { inherit inputs utils;};
+        specialArgs = {
+          inherit inputs; utils = mkUtils "aarch64-darwin";
+        };
       };
     };
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
@@ -52,7 +45,7 @@
       modules = [
         ./hosts/alex-desktop
       ];
-      specialArgs = { inherit inputs utils; };
+      specialArgs = { inherit inputs; utils = mkUtils "aarch64-darwin"; };
     };
   };
 }

@@ -7,7 +7,7 @@
   home-manager.users.aris = {
     home.username = "aris";
     home.homeDirectory = "/home/aris";
-    home.stateVersion = "24.05";
+    home.stateVersion = "25.05";
     programs.home-manager.enable = true;
     imports = [
       inputs.catppuccin.homeManagerModules.catppuccin
@@ -15,7 +15,7 @@
       ./command-line
       ./editors
       ./ssh
-      ./nixos/gnome
+      ./linux/gnome
     ];
     catppuccin = {
       flavor = "mocha";

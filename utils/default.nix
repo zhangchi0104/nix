@@ -1,4 +1,4 @@
-{nixpkgs,...}@inputs: 
+{ nixpkgs, system }@inputs:
 let
   constants = import ./constants.nix inputs;
   inputsWihtConstants = nixpkgs.lib.updateManyAttrsByPath [{
