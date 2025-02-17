@@ -1,13 +1,11 @@
-{ pkgs, ... }:
+{ utils, ... }:
 
 let
-  op-agent-sock = if pkgs.stdenvNoCC.isDarwin
-    then "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-    else "~/.1password/agent.sock";
+  inherit (utils.constants) opAgentSock;
 in 
 {   # I want
     programs.ssh.extraConfig = ''
       Host *
-        IdentityAgent "${op-agent-sock}"
+        IdentityAgent "${opAgentSock}"
     '';
 }

@@ -1,7 +1,8 @@
-{ ... }:
+{ utils, ... }:
+let
+  inherit (utils.functions) sourceDir;
 
+in
 {
-  imports = [
-    ./neovim.nix
-  ];
+  imports = sourceDir ./.;
 }
