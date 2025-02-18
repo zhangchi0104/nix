@@ -7,6 +7,10 @@
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
+    nix-vscode-extensions = { 
+      url = "github:nix-community/nix-vscode-extensions";
+    };
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master"; 
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,11 +28,14 @@
     };
   };
 
-  outputs = { self, nix-darwin, nixpkgs, ... }@inputs:
+  outputs = { self, nix-darwin, nixpkgs, nix-vscode-extensions,... }@inputs:
   let
     mkUtils = system: import ./utils {  inherit system nixpkgs;};
   in
   {
+    nixpkgs.overlays = [
+        nix-vscode-extensions.overlays.default
+    ];
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#zhangchis-MacBook-Pro
     darwinConfigurations = { 
