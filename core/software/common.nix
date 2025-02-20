@@ -38,6 +38,8 @@
       ngrok
       twilio-cli
       pythonWithPackages
+
+      _1password-cli
       
     ];
 }

@@ -14,6 +14,7 @@
       "slack"
       "postman"
       "visual-studio-code"
+      "1password"
     ];
     brews = [
       "livekit-cli"
