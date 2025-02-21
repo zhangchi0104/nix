@@ -1,9 +1,9 @@
 { nixpkgs, constants, ... }@inputs:
 let 
-  inherit (nixpkgs.lib.attrsets) mapAttrsToList;
+  inherit (nixpkgs.lib.attrsets) mapAttrsToList concatMapAttrs;
   inherit (nixpkgs.lib.path) append;
   inherit (nixpkgs.lib.lists) filter;
-  inherit (builtins) match;
+  inherit (builtins) match isAttrs;
   inherit (constants) arch os;
   removeAll =  itemsToRemove: allItems:
     filter (item: !builtins.elem item itemsToRemove) allItems;

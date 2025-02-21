@@ -62,10 +62,13 @@ in
     userSettings = {
       "workbench.colorTheme" = "One Dark Pro Mix";
       "files.autoSave" = "onFocusChange";
+
       # editor settings
       "editor.fontSize" = 14;
       "editor.fontFamily" = "'JetBrains Mono', monospace";
-      "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
+      "editor.formatOnPaste" = true;
+      "editor.formatOnSave" = true;
+      
       # tab stop by language
       "[typescriptreact]" = mkTabStop 2;
       "[javascript]" = mkTabStop 2;

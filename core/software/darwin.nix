@@ -15,6 +15,8 @@
       "postman"
       "visual-studio-code"
       "1password"
+      "raycast"
+      "jordanbaird-ice"
     ];
     brews = [
       "livekit-cli"
