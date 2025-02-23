@@ -16,7 +16,10 @@ let
   vscodeExtensionsDir = mkExtensionDir "vscode";
   cursorConfigDir = mkConfigDir "cursor";
   vscodeConfigDir = mkConfigDir "vscode";
-  mkTabStop = size: { "editor.tabSize" = size; };
+  mkFrontendSettings = tabSize: {
+    "editor.tabSize" = tabSize;
+    "editor.defaultFormatter" = "esbenp.prettier-vscode";
+  };
 in 
 {
   programs.vscode = {
@@ -70,12 +73,12 @@ in
       "editor.formatOnSave" = true;
       
       # tab stop by language
-      "[typescriptreact]" = mkTabStop 2;
-      "[javascript]" = mkTabStop 2;
-      "[javascriptreact]" = mkTabStop 2;
-      "[css]" = mkTabStop 2;
-      "[less]" = mkTabStop 2;
-      "[html]" = mkTabStop 2;
+      "[typescriptreact]" = mkFrontendSettings 2;
+      "[javascript]" = mkFrontendSettings 2;
+      "[javascriptreact]" = mkFrontendSettings 2;
+      "[css]" = mkFrontendSettings 2;
+      "[less]" = mkFrontendSettings 2;
+      "[html]" = mkFrontendSettings 2;
     };
   };
   home.activation.copyVscodeSettingsToCursor = lib.hm.dag.entryAfter ["writeBoundary" "installPackages"] ''

@@ -34,6 +34,7 @@
       nodejs_20
       bun
       yarn
+      pnpm
       stow
       ngrok
       twilio-cli
