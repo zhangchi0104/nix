@@ -33,12 +33,14 @@ rec {
     in builtins.map (it: append dir it) combinedFiles;
   mkIfLinux = val: if os == "linux" then val else {};
   mkIfDarwin = val: if os == "darwin" then val else {};
-  # flatten = attrs:
-  #   let
-  #     fn = prefix: name: value:
-  #       let
-  #         foo = 
-  #       in 
-  #     flatten' = prefix: attrs': {};
-  #   in {};
+  flatten = 
+    let
+      fn = prefix: name: value:
+        let
+          mergedName = if prefix == "" then name else "${prefix}.${name}";
+        in if isAttrs value && (value.__shouldFlatten or true)
+          then flatten' mergedName value
+          else { "${mergedName}" = value; };
+      flatten' = prefix: concatMapAttrs(fn prefix);
+    in flatten' "";
 }

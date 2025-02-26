@@ -1,6 +1,7 @@
 { utils, pkgs, lib, config, inputs, ... }: 
 let
   inherit (utils.constants) isLinux;
+  inherit (utils.functions) flatten;
   darwinConfigNames = {
     cursor = "Cursor";
     vscode = "Code";
@@ -20,6 +21,16 @@ let
     "editor.tabSize" = tabSize;
     "editor.defaultFormatter" = "esbenp.prettier-vscode";
   };
+  editorSettings = flatten {
+    editor.fontSize = 14;
+    editor.fontFamily = "'JetBrains Mono', monospace";
+    editor.formatOnPaste = true;
+    editor.formatOnSave = true;
+  };
+  terminalSettings =  flatten {
+    terminal.integrated.fontFamily = "'JetBrainsMono Nerd Font', monospace";
+    terminal.integrated.lineHeight = 1.1;
+  };
 in 
 {
   programs.vscode = {
@@ -32,7 +43,6 @@ in
 
       # remote development
       ms-vscode-remote.vscode-remote-extensionpack
-
       # catppuccin
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
@@ -61,16 +71,14 @@ in
       prisma.prisma
       ms-azuretools.vscode-docker
       editorconfig.editorconfig
+
+      # Neovim Mode
+      asvetliakov.vscode-neovim
     ];
     userSettings = {
       "workbench.colorTheme" = "One Dark Pro Mix";
+      "workbench.iconTheme" = "Catppuccin Mocha";
       "files.autoSave" = "onFocusChange";
-
-      # editor settings
-      "editor.fontSize" = 14;
-      "editor.fontFamily" = "'JetBrains Mono', monospace";
-      "editor.formatOnPaste" = true;
-      "editor.formatOnSave" = true;
       
       # tab stop by language
       "[typescriptreact]" = mkFrontendSettings 2;
@@ -79,7 +87,11 @@ in
       "[css]" = mkFrontendSettings 2;
       "[less]" = mkFrontendSettings 2;
       "[html]" = mkFrontendSettings 2;
-    };
+
+      "extensions.experimental.affinity" = {
+        "asvetliakov.vscode-neovim" = 1;
+      };
+    } // editorSettings // terminalSettings;
   };
   home.activation.copyVscodeSettingsToCursor = lib.hm.dag.entryAfter ["writeBoundary" "installPackages"] ''
     mkdir -p "${cursorConfigDir}"
