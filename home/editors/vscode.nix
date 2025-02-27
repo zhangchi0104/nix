@@ -65,24 +65,30 @@ in
       bradlc.vscode-tailwindcss
       wix.vscode-import-cost
       esbenp.prettier-vscode
-
+      bradlc.vscode-tailwindcss
+      
       # Misc
       redhat.vscode-yaml
       prisma.prisma
       ms-azuretools.vscode-docker
       editorconfig.editorconfig
-
+      github.vscode-github-actions
       # Neovim Mode
       asvetliakov.vscode-neovim
+
+      # graphql
+      graphql.vscode-graphql
+      graphql.vscode-graphql-syntax
     ];
     userSettings = {
       "workbench.colorTheme" = "One Dark Pro Mix";
-      "workbench.iconTheme" = "Catppuccin Mocha";
+      "workbench.iconTheme" = "catppuccin-mocha";
       "files.autoSave" = "onFocusChange";
       
       # tab stop by language
       "[typescriptreact]" = mkFrontendSettings 2;
       "[javascript]" = mkFrontendSettings 2;
+      "[typescript]" = mkFrontendSettings 2;
       "[javascriptreact]" = mkFrontendSettings 2;
       "[css]" = mkFrontendSettings 2;
       "[less]" = mkFrontendSettings 2;
