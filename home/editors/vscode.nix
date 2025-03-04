@@ -33,6 +33,7 @@ let
   };
 in 
 {
+  nixpkgs.config.allowUnfree = true;
   programs.vscode = {
     enable = true;
     # package = utils.functions.mkIfLinux pkgs.vscode;
