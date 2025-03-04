@@ -33,8 +33,8 @@ let
   };
 in 
 {
-  nixpkgs.config.allowUnfree = true;
-  programs.vscode = {
+  # nixpkgs.config.allowUnfree = true;
+  programs.vscode.profiles.default = {
     enable = true;
     # package = utils.functions.mkIfLinux pkgs.vscode;
     extensions = with extensions.vscode-marketplace; [
@@ -94,6 +94,7 @@ in
       "[css]" = mkFrontendSettings 2;
       "[less]" = mkFrontendSettings 2;
       "[html]" = mkFrontendSettings 2;
+      "[json]" = mkFrontendSettings 2;
 
       "extensions.experimental.affinity" = {
         "asvetliakov.vscode-neovim" = 1;
