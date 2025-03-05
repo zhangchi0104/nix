@@ -15,7 +15,7 @@
 
    # home manager
    ../../home/alex-desktop-home.nix
-  ];
+  ]; 
 
   home-manager = {
     useUserPackages = true;

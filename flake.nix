@@ -34,9 +34,6 @@
     mkUtils = system: import ./utils {  inherit system nixpkgs;};
   in
   {
-    nixpkgs.overlays = [
-        nix-vscode-extensions.overlays.default
-    ];
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#zhangchis-MacBook-Pro
     darwinConfigurations = { 

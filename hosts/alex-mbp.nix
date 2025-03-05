@@ -1,5 +1,7 @@
 {inputs, utils, ...}: 
-
+let
+  inherit (inputs) nix-vscode-extensions;
+in
 {
   imports = [
     # home manager core
@@ -14,6 +16,9 @@
   # nix darwin bacsic setup
   nixpkgs.config.hostPlatform = "aarch64-darwin";
   system.stateVersion = 5;
+  nixpkgs.overlays = [
+    nix-vscode-extensions.overlays.default
+  ];
 
   # Home manager basic setup
   home-manager = {

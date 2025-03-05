@@ -33,11 +33,11 @@ let
   };
 in 
 {
+  programs.vscode.enable = true;
   # nixpkgs.config.allowUnfree = true;
   programs.vscode.profiles.default = {
-    enable = true;
     # package = utils.functions.mkIfLinux pkgs.vscode;
-    extensions = with extensions.vscode-marketplace; [
+    extensions = with pkgs.vscode-marketplace; [
       # copilot
       github.copilot
       github.copilot-chat
@@ -47,7 +47,7 @@ in
       # catppuccin
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
-      zhuangtongfa.one-dark-pro
+      zhuangtongfa.material-theme
 
       # nix
       bbenoist.nix
@@ -102,6 +102,8 @@ in
     } // editorSettings // terminalSettings;
   };
   home.activation.copyVscodeSettingsToCursor = lib.hm.dag.entryAfter ["writeBoundary" "installPackages"] ''
+    rm -rf "${cursorExtensionsDir}"
+
     mkdir -p "${cursorConfigDir}"
     mkdir -p "${cursorExtensionsDir}"
     
@@ -111,7 +113,6 @@ in
       ln -sf "${vscodeConfigDir}"/snippets "${cursorConfigDir}"
     fi
 
-    rm -rf "${cursorExtensionsDir}"/*
     if [ -d "${vscodeExtensionsDir}" ] && [ -d "${cursorExtensionsDir}" ]; then
       cp -r "${vscodeExtensionsDir}"/* "${cursorExtensionsDir}"
       sed -i 's/\/\.vscode/\/\.cursor/g' ${cursorExtensionsDir}/extensions.json
