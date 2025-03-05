@@ -1,9 +1,4 @@
 { ... }:
-let
-  dconfSettings = {
-   
-  };
-in
 {
   # nixos specific programs
   programs.firefox.enable = true;
@@ -13,9 +8,12 @@ in
     polkitPolicyOwners = ["aris"];
   };
 
+  # programs 
   programs.zsh.enable = true;
-
 
   # deconf
   programs.dconf.enable = true;
+
+  # nix-ld
+  programs.nix-ld.enable = true;
 }
