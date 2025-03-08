@@ -9,5 +9,6 @@
     android-tools
     gcc
     gnome-tweaks
+    qq
   ];
 }
