@@ -11,6 +11,6 @@ rec {
   isLinux = os == "linux";
   opAgentSock = if isDarwin
     then "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-    else "$HOME/.1password/agent.sock";
+    else "~/.1password/agent.sock";
 
 }
