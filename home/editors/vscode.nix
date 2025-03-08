@@ -1,7 +1,7 @@
-{ utils, pkgs, lib, config, inputs, ... }: 
+{ utilities, pkgs, lib, config, inputs, ... }: 
 let
-  inherit (utils.constants) isLinux;
-  inherit (utils.functions) flatten;
+  inherit (utilities.constants) isLinux;
+  inherit (utilities.functions) flatten;
   darwinConfigNames = {
     cursor = "Cursor";
     vscode = "Code";

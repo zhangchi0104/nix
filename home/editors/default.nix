@@ -1,6 +1,6 @@
-{ utils, ... }:
+{ utilities, ... }:
 let
-  inherit (utils.functions) sourceDir;
+  inherit (utilities.functions) sourceDir;
 
 in
 {

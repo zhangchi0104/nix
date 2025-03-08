@@ -1,3 +1,3 @@
-{utils, ...} : {
-  imports = utils.functions.sourceDir ./.;
+{utilities, ...} : {
+  imports = utilities.functions.sourceDir ./.;
 }

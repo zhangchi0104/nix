@@ -1,4 +1,4 @@
-{ utils, pkgs,... }:
+{ utilities, pkgs,... }:
 let
   isLinux = pkgs.stdenv.isLinux;
 in

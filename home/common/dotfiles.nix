@@ -1,6 +1,6 @@
-{utils, lib, pkgs, ...}:
+{utilities, lib, pkgs, ...}:
 let
-  inherit (utils.constants) opAgentSock;
+  inherit (utilities.constants) opAgentSock;
   cloneDotFiles = lib.hm.dag.entryAfter ["writeBoundary" "installPackages"] ''
     if [ ! -d "$HOME/.dotfiles" ] && [ -f ${opAgentSock} ]; then
       echo "Cloning dotfiles"

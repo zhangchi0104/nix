@@ -1,4 +1,4 @@
-{inputs, utils, ...}: 
+{inputs, utilities, ...}: 
 let
   inherit (inputs) nix-vscode-extensions;
 in
@@ -25,7 +25,7 @@ in
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
-      inherit inputs utils;
+      inherit inputs utilities;
     };
   };
 

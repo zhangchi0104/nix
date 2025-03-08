@@ -1,5 +1,5 @@
-{ utils, ... }:
+{ utilities, ... }:
 
 {
-  imports = utils.functions.sourceDir ./.;
+  imports = utilities.functions.sourceDir ./.;
 }

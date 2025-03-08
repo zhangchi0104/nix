@@ -1,5 +1,6 @@
-{ utils, ... }:
+{ utilities, ... }:
 
 {
-  imports = utils.functions.sourceDirByOs ./.;
+  imports = utilities.functions.sourceDirByOs ./.;
 }
+
