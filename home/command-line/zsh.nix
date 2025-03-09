@@ -17,6 +17,8 @@ in
       e = "$EDITOR";
       gco = "git checkout";
       gc = "git commit";
+      zlw = "zellij attach --create work";
+      zlp = "zellij attach --create presonal";
       oswitch = osswitch-cmd;
     };
     autosuggestion = {
