@@ -10,5 +10,6 @@
     gcc
     gnome-tweaks
     qq
+    tailscale
   ];
 }
