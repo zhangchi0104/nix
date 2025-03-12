@@ -4,7 +4,7 @@ let
   inherit (nixpkgs.lib.path) append;
   inherit (nixpkgs.lib.lists) filter;
   inherit (builtins) match isAttrs;
-  inherit (constants) arch os;
+  inherit (constants) os;
   removeAll =  itemsToRemove: allItems:
     filter (item: !builtins.elem item itemsToRemove) allItems;
 in
@@ -25,7 +25,7 @@ rec {
     in builtins.map (it: append dir it) sourceFiles;
   sourceDirByOs = dir:
     let
-      filesToExclude = [ "default.nix" "darwin.nix" "linux.nix" "linux" "darwin" ];
+      filesToExclude = [ "default.nix" "darwin.nix" "linux.nix" "linux" "darwin" "nixos" "nixos.nix" ];
       files = listDir dir;
       commonFiles = removeAll filesToExclude files;
       osSpecificFiles = filter (file: match ".*${os}(\.nix)?" file != null) files;
