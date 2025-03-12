@@ -12,6 +12,7 @@
    # machine specific settings
    ./local-settings.nix           # users
    ./hardware-configuration.nix   # hardware configurations
+   ./sshd.nix
 
    # home manager
    ../../home/alex-desktop-home.nix
