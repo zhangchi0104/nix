@@ -9,14 +9,14 @@
     "primary-gh" = {
       hostname = "github.com";
       user = "git";
-      identityFile = "/home/ssh/.ssh/ed25519_primary.pub";
+      identityFile = "~/.ssh/ed25519_primary.pub";
       identitiesOnly = true;
     };
 
     "secondary-gh" = {
       hostname = "github.com";
       user = "git";
-      identityFile = "/home/ssh/.ssh/ed25519_secondary.pub";
+      identityFile = "~/.ssh/ed25519_secondary.pub";
       identitiesOnly = true;
     };
   };
