@@ -19,5 +19,11 @@
       identityFile = "~/.ssh/ed25519_secondary.pub";
       identitiesOnly = true;
     };
+    "nixos" = {
+      hostname = "100.66.104.89";
+      user = "aris";
+      forwardAgent = true;
+      port = 2024;
+    };
   };
 }

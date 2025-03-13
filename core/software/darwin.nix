@@ -17,6 +17,7 @@
       "1password"
       "raycast"
       "jordanbaird-ice"
+      "tailscale"
     ];
     brews = [
       "livekit-cli"
