@@ -1,4 +1,4 @@
-{inputs, ...}:
+{inputs, lib, ...}:
 {
 
   imports = [
@@ -16,9 +16,11 @@
       ./editors
       ./ssh
       ./linux/gnome
+      ./linux/link-code-dir.nix
     ];
     catppuccin = {
       flavor = "mocha";
     };
+    
   };
 }

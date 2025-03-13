@@ -3,8 +3,8 @@ let
   inherit (utilities.constants) isLinux;
   inherit (utilities.functions) flatten;
   darwinConfigNames = {
-    cursor = "Cursor";
-    vscode = "Code";
+    Cursor = "Cursor";
+    Code = "Code";
   };
   inherit (pkgs.stdenv.hostPlatform) system;
   extensions = inputs.nix-vscode-extensions.extensions.${system};
@@ -15,8 +15,8 @@ let
     else "$HOME/Library/Application Support/${mkDarwinConfigName pname}/User";
   cursorExtensionsDir = mkExtensionDir "cursor";
   vscodeExtensionsDir = mkExtensionDir "vscode";
-  cursorConfigDir = mkConfigDir "cursor";
-  vscodeConfigDir = mkConfigDir "vscode";
+  cursorConfigDir = mkConfigDir "Cursor";
+  vscodeConfigDir = mkConfigDir "Code";
   mkFrontendSettings = tabSize: {
     "editor.tabSize" = tabSize;
     "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -108,9 +108,15 @@ in
     mkdir -p "${cursorExtensionsDir}"
     
     if [ -d "${vscodeConfigDir}" ] && [ -d "${cursorConfigDir}" ]; then
-      ln -sf "${vscodeConfigDir}"/settings.json "${cursorConfigDir}"/settings.json
-      ln -sf "${vscodeConfigDir}"/tasks.json "${cursorConfigDir}"/tasks.json
-      ln -sf "${vscodeConfigDir}"/snippets "${cursorConfigDir}"
+      if [ -f "${vscodeConfigDir}"/settings.json ]; then
+        ln -sf "${vscodeConfigDir}"/settings.json "${cursorConfigDir}"/settings.json
+      fi
+      if [ -f "${vscodeConfigDir}"/tasks.json ]; then
+        ln -sf "${vscodeConfigDir}"/tasks.json "${cursorConfigDir}"/tasks.json
+      fi
+      if [ -d "${vscodeConfigDir}"/snippets ]; then
+        ln -sf "${vscodeConfigDir}"/snippets "${cursorConfigDir}"
+      fi
     fi
 
     if [ -d "${vscodeExtensionsDir}" ] && [ -d "${cursorExtensionsDir}" ]; then

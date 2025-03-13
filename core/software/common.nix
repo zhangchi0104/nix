@@ -25,6 +25,7 @@
       eza
       openssh
       uv
+      unzip
 
       # aws
       awscli2
@@ -39,6 +40,9 @@
       ngrok
       twilio-cli
       pythonWithPackages
+
+      #c Rust
+      cargo
 
       _1password-cli
       
