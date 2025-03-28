@@ -13,10 +13,10 @@
       identitiesOnly = true;
     };
 
-    "secondary-gh" = {
+    "everyoungai-gh" = {
       hostname = "github.com";
       user = "git";
-      identityFile = "~/.ssh/ed25519_secondary.pub";
+      identityFile = "~/.ssh/ed25519_everyoung.pub";
       identitiesOnly = true;
     };
     "nixos" = {

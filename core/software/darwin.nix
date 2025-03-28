@@ -18,6 +18,7 @@
       "raycast"
       "jordanbaird-ice"
       "tailscale"
+      "warp"
     ];
     brews = [
       "livekit-cli"
