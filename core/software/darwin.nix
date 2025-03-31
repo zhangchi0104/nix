@@ -17,7 +17,6 @@
       "1password"
       "raycast"
       "jordanbaird-ice"
-      "tailscale"
       "warp"
     ];
     brews = [
