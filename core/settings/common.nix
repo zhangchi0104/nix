@@ -12,4 +12,6 @@ in
     jetbrains-mono
     monaspace
   ];
+  services.tailscale.enable = true;
+
 }
