@@ -1,22 +1,6 @@
-{ utilities, pkgs, lib, config, inputs, ... }: 
+{ utilities, pkgs, ... }: 
 let
-  inherit (utilities.constants) isLinux;
   inherit (utilities.functions) flatten;
-  darwinConfigNames = {
-    Cursor = "Cursor";
-    Code = "Code";
-  };
-  inherit (pkgs.stdenv.hostPlatform) system;
-  extensions = inputs.nix-vscode-extensions.extensions.${system};
-  mkExtensionDir = pname: "$HOME/.${pname}/extensions";
-  mkDarwinConfigName = pname: darwinConfigNames.${pname};
-  mkConfigDir = pname: if isLinux 
-    then "${config.xdg.configHome}/${pname}/User"
-    else "$HOME/Library/Application Support/${mkDarwinConfigName pname}/User";
-  cursorExtensionsDir = mkExtensionDir "cursor";
-  vscodeExtensionsDir = mkExtensionDir "vscode";
-  cursorConfigDir = mkConfigDir "Cursor";
-  vscodeConfigDir = mkConfigDir "Code";
   mkFrontendSettings = tabSize: {
     "editor.tabSize" = tabSize;
     "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -34,6 +18,7 @@ let
 in 
 {
   programs.vscode.enable = true;
+  programs.vscode.package = pkgs.code-cursor;
   # nixpkgs.config.allowUnfree = true;
   programs.vscode.profiles.default = {
     # package = utils.functions.mkIfLinux pkgs.vscode;
@@ -101,27 +86,27 @@ in
       };
     } // editorSettings // terminalSettings;
   };
-  home.activation.copyVscodeSettingsToCursor = lib.hm.dag.entryAfter ["writeBoundary" "installPackages"] ''
-    rm -rf "${cursorExtensionsDir}"
-
-    mkdir -p "${cursorConfigDir}"
-    mkdir -p "${cursorExtensionsDir}"
-    
-    if [ -d "${vscodeConfigDir}" ] && [ -d "${cursorConfigDir}" ]; then
-      if [ -f "${vscodeConfigDir}"/settings.json ]; then
-        ln -sf "${vscodeConfigDir}"/settings.json "${cursorConfigDir}"/settings.json
-      fi
-      if [ -f "${vscodeConfigDir}"/tasks.json ]; then
-        ln -sf "${vscodeConfigDir}"/tasks.json "${cursorConfigDir}"/tasks.json
-      fi
-      if [ -d "${vscodeConfigDir}"/snippets ]; then
-        ln -sf "${vscodeConfigDir}"/snippets "${cursorConfigDir}"
-      fi
-    fi
-
-    if [ -d "${vscodeExtensionsDir}" ] && [ -d "${cursorExtensionsDir}" ]; then
-      cp -r "${vscodeExtensionsDir}"/* "${cursorExtensionsDir}"
-      sed -i 's/\/\.vscode/\/\.cursor/g' ${cursorExtensionsDir}/extensions.json
-    fi
-  '';
+  # home.activation.copyVscodeSettingsToCursor = lib.hm.dag.entryAfter ["writeBoundary" "installPackages"] ''
+  #   rm -rf "${cursorExtensionsDir}"
+  #
+  #   mkdir -p "${cursorConfigDir}"
+  #   mkdir -p "${cursorExtensionsDir}"
+  #
+  #   if [ -d "${vscodeConfigDir}" ] && [ -d "${cursorConfigDir}" ]; then
+  #     if [ -f "${vscodeConfigDir}"/settings.json ]; then
+  #       ln -sf "${vscodeConfigDir}"/settings.json "${cursorConfigDir}"/settings.json
+  #     fi
+  #     if [ -f "${vscodeConfigDir}"/tasks.json ]; then
+  #       ln -sf "${vscodeConfigDir}"/tasks.json "${cursorConfigDir}"/tasks.json
+  #     fi
+  #     if [ -d "${vscodeConfigDir}"/snippets ]; then
+  #       ln -sf "${vscodeConfigDir}"/snippets "${cursorConfigDir}"
+  #     fi
+  #   fi
+  #
+  #   if [ -d "${vscodeExtensionsDir}" ] && [ -d "${cursorExtensionsDir}" ]; then
+  #     cp -r "${vscodeExtensionsDir}"/* "${cursorExtensionsDir}"
+  #     sed -i 's/\/\.vscode/\/\.cursor/g' ${cursorExtensionsDir}/extensions.json
+  #   fi
+  # '';
 }

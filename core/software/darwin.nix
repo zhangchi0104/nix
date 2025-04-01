@@ -9,7 +9,6 @@
     enable = true;
     casks = [
       "ghostty"
-      "cursor"
       "android-platform-tools"
       "slack"
       "postman"
@@ -17,7 +16,6 @@
       "1password"
       "raycast"
       "jordanbaird-ice"
-      "warp"
     ];
     brews = [
       "livekit-cli"

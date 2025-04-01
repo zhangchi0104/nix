@@ -9,7 +9,7 @@
       vim
       neovim
       # Shells
-
+      warp-terminal
       zsh
       # CLI tools
       git
@@ -43,7 +43,6 @@
 
       #c Rust
       cargo
-
       _1password-cli
       
     ];
