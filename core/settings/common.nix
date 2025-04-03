@@ -2,7 +2,7 @@
 let
   inherit (inputs) nix-vscode-extensions;
   mapleFonts = with pkgs.maple-mono; [
-    NF NF-CN
+    NF NF-CN Normal-NF Normal-NF-CN
   ];
 in
 {

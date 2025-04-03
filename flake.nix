@@ -27,6 +27,12 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # ghostty shaders
+    ghostty-shaders = {
+      url = "github:hackr-sh/ghostty-shaders";
+      flake = false;
+    }; 
   };
 
   outputs = { self, nix-darwin, nixpkgs, nix-vscode-extensions,... }@inputs:

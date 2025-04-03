@@ -7,7 +7,8 @@ let
   };
   editorSettings = flatten {
     editor.fontSize = 14;
-    editor.fontFamily = "'JetBrains Mono', monospace";
+    editor.fontLigatures = true;
+    editor.fontFamily = "'Maple Mono Normal NF', 'JetBrains Mono', monospace";
     editor.formatOnPaste = true;
     editor.formatOnSave = true;
   };

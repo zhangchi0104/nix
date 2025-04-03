@@ -10,7 +10,7 @@
     home.stateVersion = "25.05";
     programs.home-manager.enable = true;
     imports = [
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.catppuccin.homeModules.catppuccin
       ./common/dotfiles.nix
       ./common/software
       ./command-line
