@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 { 
   environment.systemPackages = with pkgs; [
+    warp-terminal
     ghostty
     code-cursor
     slack

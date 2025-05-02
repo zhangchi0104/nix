@@ -9,7 +9,6 @@
       vim
       neovim
       # Shells
-      warp-terminal
       zsh
       # CLI tools
       git
@@ -30,7 +29,8 @@
       # aws
       awscli2
       aws-gate
- 
+      terraform
+
       # Development
       nodejs_20
       bun

@@ -16,6 +16,7 @@
       "1password"
       "raycast"
       "jordanbaird-ice"
+      "warp"
     ];
     brews = [
       "livekit-cli"

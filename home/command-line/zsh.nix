@@ -36,6 +36,12 @@ in
       ANDROID_HOME = androidHome;
     };
     initExtraFirst=''
+      if [ $__ZSH_DEBUG ]; then
+        echo $PATH
+        echo $(which mv)
+        echo $(which dirname)
+        echo $(which mkdir)
+      fi
       include() {
         if [ -f $1 ]; then
           source $1
