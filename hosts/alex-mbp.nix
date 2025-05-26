@@ -16,6 +16,7 @@ in
   # nix darwin bacsic setup
   nixpkgs.config.hostPlatform = "aarch64-darwin";
   system.stateVersion = 5;
+  system.primaryUser = "alexzhang";
   nixpkgs.overlays = [
     nix-vscode-extensions.overlays.default
   ];

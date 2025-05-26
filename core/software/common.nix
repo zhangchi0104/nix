@@ -23,6 +23,7 @@
       ripgrep
       eza
       openssh
+      fzf
       uv
       unzip
 
