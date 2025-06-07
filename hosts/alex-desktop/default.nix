@@ -7,8 +7,8 @@
    ../../core/settings/common.nix
    ../../core/software/common.nix
    # OS Specific Settings
-   ../../core/settings/nixos
-   ../../core/software/nixos.nix
+   ../../core/settings/linux
+   ../../core/software/linux.nix
    # machine specific settings
    ./local-settings.nix           # users
    ./hardware-configuration.nix   # hardware configurations
