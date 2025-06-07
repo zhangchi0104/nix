@@ -17,6 +17,7 @@
       "raycast"
       "jordanbaird-ice"
       "warp"
+      "cursor"
     ];
     brews = [
       "livekit-cli"

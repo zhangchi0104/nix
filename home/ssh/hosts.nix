@@ -20,10 +20,9 @@
       identitiesOnly = true;
     };
     "nixos" = {
-      hostname = "100.66.104.89";
+      hostname = "nixos";
       user = "aris";
       forwardAgent = true;
-      port = 2024;
     };
     "everyoungai-aurora-tunnel" = {
       hostname = "3.26.233.71";
